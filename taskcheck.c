@@ -13,12 +13,12 @@ taskstruct taskname[];
 int main(int argc , char *argv)
 {
     //checking for improper use of this program
-    if(int argc == 1)
+    if(argc == 1)
     {
         printf("Usage: ./taskcheck (tasks)");
         return 1;
     }
-    else if(int argc > 4)
+    else if(argc > 4)
     {
         printf("This program was intended to be used with 3 tasks only, to add more please refer how to by the documentation");
     }
