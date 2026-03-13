@@ -4,8 +4,9 @@ typedef struct
 {
     char affirmation;
     char * task;
+    bool taskststus;
 } taskstruct;
-void taskcheck(int c);
+void taskcheck(void);
 //defined a data type called taskstruct which allows us to find all relevant info at one place
 taskstruct taskname[];
 //taskname is a variable of our defined data type
@@ -26,15 +27,28 @@ int main(int argc , char *argv)
        for(int i = 1; i < argc; i++)
        {
         //asign names to the defined data type for easy access
-        taskname.task[i - 1] = argv[i];
+        taskname[i - 1].task = argv[i];
+        taskname[i - 1].taskstatus = false;
        }
-       for(int k = 0; k < argc-1; k++)
-       {
-        taskcheck(k);
-       }
+       //Run the main logic
+       taskcheck();
     }
 }
-void taskcheck(int c)
+ void taskcheck(void)
 {
-    
+    for(int i = 0; i < argc - 1; i++)
+    {
+        printf("Task %i: %s\n", i + 1, taskname[i].task);
+        scanf(" %c", &taskname[i].affirmation);
+        if(taskname[i].affirmation == 'y')
+        {
+            printf("Good! Looks like you have done your %s work.", taskname[i].task);
+        }
+        else
+        {
+            printf("Looks like you entered a different character or havent done you work");
+            taskcheck();
+        }
+    }
+    return;
 }
