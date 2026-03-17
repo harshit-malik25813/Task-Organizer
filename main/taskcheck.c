@@ -19,9 +19,9 @@ int main(int argc , char *argv)
         printf("Usage: ./taskcheck (tasks)");
         return 1;
     }
-    else if(argc > 4)
+    else if(argc > 9)
     {
-        printf("This program was intended to be used with 3 tasks only, to add more please refer how to by the documentation");
+        printf("This program was intended to be used with  maximum of 8 tasks only, to add more please refer how to by the documentation");
     }
     else
     {
@@ -48,7 +48,7 @@ int main(int argc , char *argv)
         }
         else
         {
-            printf("Looks like you entered a different character or havent done you work");
+            printf("Looks like you entered a different character or havent done your work");
             taskcheck();
         }
     }
