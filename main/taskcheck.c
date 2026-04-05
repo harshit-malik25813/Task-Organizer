@@ -1,56 +1,108 @@
 #include <stdio.h>
-//program starts here
+#include <stdlib.h>
+#include <stdbool.h>
+
+// Defined data type to store task information
 typedef struct
 {
     char affirmation;
-    char * task;
+    char *task;
     bool taskstatus;
 } taskstruct;
+
+#define MAX_TASKS 8
+
+taskstruct *taskname = NULL;
 int count = 0;
+
 void taskcheck(void);
-//defined a data type called taskstruct which allows us to find all relevant info at one place
-taskstruct taskname[];
-//taskname is a variable of our defined data type
-int main(int argc , char *argv)
+
+int main(int argc, char *argv[])
 {
-    //checking for improper use of this program
-    if(argc == 1)
+    // Checking for improper use of this program
+    if (argc == 1)
     {
-        printf("Usage: ./taskcheck (tasks)");
+        printf("Usage: ./taskcheck <task1> <task2> ... (max 8 tasks)\n");
         return 1;
     }
-    else if(argc > 9)
+
+    if (argc > MAX_TASKS + 1)
     {
-        printf("This program was intended to be used with  maximum of 8 tasks only, to add more please refer how to by the documentation");
+        printf("Error: This program supports a maximum of %d tasks only.\n", MAX_TASKS);
+        return 1;
     }
-    else
+
+    // Allocate memory for tasks
+    count = argc - 1;
+    taskname = (taskstruct *)malloc(count * sizeof(taskstruct));
+
+    if (taskname == NULL)
     {
-       for(int i = 1; i < argc; i++)
-       {
-        //asign names to the defined data type for easy access
-        taskname[i - 1].task = argv[i];
-        taskname[i - 1].taskstatus = false;
-       }
-       count = argc - 1;
-       //Run the main logic
-       taskcheck();
+        printf("Error: Memory allocation failed.\n");
+        return 1;
     }
+
+    // Assign task names and initialize status
+    for (int i = 0; i < count; i++)
+    {
+        taskname[i].task = argv[i + 1];
+        taskname[i].taskstatus = false;
+        taskname[i].affirmation = '\0';
+    }
+
+    // Run the main logic
+    taskcheck();
+
+    // Free allocated memory
+    free(taskname);
+    taskname = NULL;
+
+    return 0;
 }
- void taskcheck(void)
+
+void taskcheck(void)
 {
-    for(int i = 0; i < count - 1; i++)
+    // Process all tasks (fixed: was count - 1, which skipped last task)
+    for (int i = 0; i < count; i++)
     {
-        printf("Task %i: %s\n", i + 1, taskname[i].task);
-        scanf(" %c", &taskname[i].affirmation);
-        if(taskname[i].affirmation == 'y')
+        printf("Task %d: %s\n", i + 1, taskname[i].task);
+        printf("Completed? (y/n): ");
+
+        // Validate scanf return value
+        if (scanf(" %c", &taskname[i].affirmation) != 1)
         {
-            printf("Good! Looks like you have done your %s work.", taskname[i].task);
+            printf("Error: Invalid input. Please try again.\n");
+            // Clear input buffer
+            while (getchar() != '\n');
+            i--; // Retry this task
+            continue;
+        }
+
+        if (taskname[i].affirmation == 'y' || taskname[i].affirmation == 'Y')
+        {
+            taskname[i].taskstatus = true;
+            printf("Good! You've completed your %s work.\n\n", taskname[i].task);
+        }
+        else if (taskname[i].affirmation == 'n' || taskname[i].affirmation == 'N')
+        {
+            printf("Make sure to complete your %s work.\n\n", taskname[i].task);
         }
         else
         {
-            printf("Looks like you entered a different character or havent done your work");
-            taskcheck();
+            printf("Invalid input. Please enter 'y' or 'n'.\n\n");
+            i--; // Retry this task
         }
     }
-    return;
+
+    // Print summary
+    printf("\n--- Task Summary ---\n");
+    int completed = 0;
+    for (int i = 0; i < count; i++)
+    {
+        if (taskname[i].taskstatus)
+            completed++;
+        printf("Task %d: %s - %s\n", i + 1, taskname[i].task,
+               taskname[i].taskstatus ? "Completed" : "Pending");
+    }
+    printf("Completed: %d/%d tasks\n", completed, count);
 }
