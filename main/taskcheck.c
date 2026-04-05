@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 
     // Allocate memory for tasks
     count = argc - 1;
-    taskname = (taskstruct *)malloc(count * sizeof(taskstruct));
+    taskname = malloc(count * sizeof(taskstruct));
 
     if (taskname == NULL)
     {
@@ -73,7 +73,7 @@ void taskcheck(void)
         {
             printf("Error: Invalid input. Please try again.\n");
             // Clear input buffer
-            while (getchar() != '\n');
+            int c; while ((c = getchar()) != '\n' && c != EOF);
             i--; // Retry this task
             continue;
         }
