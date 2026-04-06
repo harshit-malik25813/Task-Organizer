@@ -1,0 +1,135 @@
+# Compiled C files
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+*.exe
+*.dll
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+.clangd
+compile_commands.json
+
+# OS files
+.DS_Store
+Thumbs.db
+.gitkeep
+*.stackdump
+
+# Build directories
+build/
+cmake-build-debug/
+cmake-build-release/
+dist/
+bin/
+*.out
+
+# Executables (cross-platform)
+a.out
+*.exe
+
+# Environment files
+.env
+.env.local
+
+# Logs and temp files
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+
+# GitHub
+.github/
+
+# Debugging
+.gdb_history
+.lldb_history
+*.dSYM/
+vgcore.*
+
+# CMake/Build system
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+*.cmake
+
+# Dependencies
+*.a
+*.so*# Compiled C files
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+*.exe
+*.dll
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+.clangd
+compile_commands.json
+
+# OS files
+.DS_Store
+Thumbs.db
+.gitkeep
+*.stackdump
+
+# Build directories
+build/
+cmake-build-debug/
+cmake-build-release/
+dist/
+bin/
+*.out
+
+# Executables (cross-platform)
+a.out
+*.exe
+
+# Environment files
+.env
+.env.local
+
+# Logs and temp files
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+
+# GitHub
+.github/
+
+# Debugging
+.gdb_history
+.lldb_history
+*.dSYM/
+vgcore.*
+
+# CMake/Build system
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+*.cmake
+
+# Dependencies
+*.a
+*.so*
