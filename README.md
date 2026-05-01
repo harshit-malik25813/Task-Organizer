@@ -48,13 +48,13 @@ cd Task-Organizer
 ## Linux / macOS
 
 ```bash
-gcc main.c -o taskorganizer
+gcc taskcheck.c -o taskorganizer
 ```
 
 ## Windows (MinGW)
 
 ```bash
-gcc main.c -o taskorganizer.exe
+gcc taskcheck.c -o taskorganizer.exe
 ```
 
 ---
@@ -74,16 +74,6 @@ taskorganizer.exe
 ```
 
 ---
-
-# Example Menu
-
-```
-1. Add Task
-2. View Tasks
-3. Update Task
-4. Delete Task
-5. Exit
-```
 
 ---
 
