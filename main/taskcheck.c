@@ -1,3 +1,8 @@
+/*
+    Task-Organizer Command Line tool
+    Developed by: harshit-malik25813, hvkillya
+    Github-repository: https://github.com/harshit-malik25813/Task-Organizer
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
