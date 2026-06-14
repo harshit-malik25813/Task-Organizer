@@ -18,6 +18,7 @@ int main(void)
     char *python_key[2] = "python3 --version 2>&1";
     for(int i = 0; i < 3; i++)
     {
+        // TODO: Factorize this popen and pclose block into a function
         FILE *fp = popen(python_key[i], "r");
         if (!fp)
         {
@@ -25,7 +26,8 @@ int main(void)
         }
         char buffer[512];
         fgets(buffer, sizeof(buffer), fp);
+        // TODO: return the value of python keyword that worked and save it in a variable
     }
     char *improve_check = " -c \\\"import importlib.util; print(importlib.util.find_spec('improve') is not None)\\\"";
-    system()
+    // TODO: add python keyword and run the check command using strcat
 }
