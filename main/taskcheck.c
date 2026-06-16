@@ -56,6 +56,12 @@ int main(int argc, char *argv[])
         taskname[i].taskstatus = false;
         taskname[i].affirmation = '\0';
     }
+    // Unreleased Feature: Connect with improve-cli tool
+    char * connect = "connector";
+    if(strcmp(argv[1], connect))
+    {
+        connector();
+    }
 
     // Run the main logic
     taskcheck();
@@ -65,6 +71,7 @@ int main(int argc, char *argv[])
     taskname = NULL;
 
     return 0;
+
 }
 
 void taskcheck(void)
@@ -112,9 +119,4 @@ void taskcheck(void)
                taskname[i].taskstatus ? "Completed" : "Pending");
     }
     printf("Completed: %d/%d tasks\n", completed, count);
-    char * connect = "connector";
-    if(strcmp(argv[1], connect))
-    {
-        connector();
-    }
 }
