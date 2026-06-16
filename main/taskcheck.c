@@ -3,9 +3,11 @@
     Developed by: harshit-malik25813, hvkillya
     Github-repository: https://github.com/harshit-malik25813/Task-Organizer
 */
+#include "connector.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 
 // Defined data type to store task information
 typedef struct
@@ -110,4 +112,9 @@ void taskcheck(void)
                taskname[i].taskstatus ? "Completed" : "Pending");
     }
     printf("Completed: %d/%d tasks\n", completed, count);
+    char * connect = "connector";
+    if(strcmp(argv[1], connect))
+    {
+        connector();
+    }
 }
