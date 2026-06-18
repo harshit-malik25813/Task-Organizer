@@ -3,8 +3,8 @@
 A simple **command-line Task Organizer written in C** that allows users to manage tasks directly from the terminal.
 
 ⚠️ **Project Status**
-This project is currently **under development and may contain bugs.**  
-It is mainly a **learning project** to practice C programming and CLI application design.
+This project is deprecated and a more conventional and mordern tool similar to this project will be released soon.\
+This project is meant to act as reference.
 
 ---
 
